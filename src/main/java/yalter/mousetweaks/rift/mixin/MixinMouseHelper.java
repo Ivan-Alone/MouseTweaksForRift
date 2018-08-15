@@ -13,10 +13,13 @@ public class MixinMouseHelper implements IMixinMouseHelper {
     private int dwheel = 0;
 
     @Override
-    public int getAndResetDWheel() {
-        int ret = dwheel;
+    public int getDWheel() {
+        return dwheel;
+    }
+
+    @Override
+    public void resetDWheel() {
         dwheel = 0;
-        return ret;
     }
 
     @Inject(method = "onScroll", at = @At("RETURN"))

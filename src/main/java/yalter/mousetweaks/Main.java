@@ -26,6 +26,7 @@ public class Main
 	public static OnTickMethod onTickMethod;
 
 	private static Minecraft mc;
+	private static IMixinMouseHelper mixinMouseHelper;
 
 	private static GuiScreen oldGuiScreen = null;
 	private static Slot oldSelectedSlot = null;
@@ -51,6 +52,7 @@ public class Main
 		initialized = true;
 
 		mc = Minecraft.getMinecraft();
+		mixinMouseHelper = (IMixinMouseHelper) mc.mouseHelper;
 
 		config = new Config(mc.gameDir + File.separator + "config" + File.separator + "MouseTweaks.cfg");
 		config.read();
@@ -149,6 +151,8 @@ public class Main
 		}
 
 		oldRMBDown = MouseUtil.isMouseButtonDown(GLFW.GLFW_MOUSE_BUTTON_RIGHT);
+
+		mixinMouseHelper.resetDWheel();
 	}
 
 	private static void onUpdateInGui(GuiScreen currentScreen) {
@@ -279,8 +283,7 @@ public class Main
 	}
 
 	private static void handleWheel(Slot selectedSlot) {
-		IMixinMouseHelper mixinMouseHelper = (IMixinMouseHelper) mc.mouseHelper;
-		int wheel = (config.wheelTweak && !disableWheelForThisContainer) ? mixinMouseHelper.getAndResetDWheel() / 120 : 0;
+		int wheel = (config.wheelTweak && !disableWheelForThisContainer) ? mixinMouseHelper.getDWheel() / 120 : 0;
 		if (config.wheelScrollDirection == WheelScrollDirection.INVERTED)
 			wheel = -wheel;
 

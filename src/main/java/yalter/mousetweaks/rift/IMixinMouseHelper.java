@@ -1,5 +1,7 @@
 package yalter.mousetweaks.rift;
 
 public interface IMixinMouseHelper {
-    int getAndResetDWheel();
+    int getDWheel();
+
+    void resetDWheel();
 }
