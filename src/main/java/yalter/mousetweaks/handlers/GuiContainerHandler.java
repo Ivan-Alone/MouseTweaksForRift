@@ -19,7 +19,7 @@ public class GuiContainerHandler implements IGuiScreenHandler {
 	protected IMixinGuiContainer mixinGuiContainer;
 
 	public GuiContainerHandler(GuiContainer guiContainer) {
-		this.mc = Minecraft.getMinecraft();
+		this.mc = Minecraft.getInstance();
 		this.guiContainer = guiContainer;
 		try {
 			this.mixinGuiContainer = (IMixinGuiContainer) guiContainer;
@@ -38,11 +38,11 @@ public class GuiContainerHandler implements IGuiScreenHandler {
 	}
 
 	private double getRequiredMouseX() {
-		return (mc.mouseHelper.func_198024_e() * mc.mainWindow.getScaledWidth()) / mc.mainWindow.getWindowWidth();
+		return (mc.mouseHelper.getMouseX() * mc.mainWindow.getScaledWidth()) / this.getDisplayWidth();
 	}
 
 	private double getRequiredMouseY() {
-		return (mc.mouseHelper.func_198026_f() * mc.mainWindow.getScaledHeight()) / mc.mainWindow.getWindowHeight();
+		return (mc.mouseHelper.getMouseY() * mc.mainWindow.getScaledHeight()) / this.getDisplayHeight();
 	}
 
 	@Override

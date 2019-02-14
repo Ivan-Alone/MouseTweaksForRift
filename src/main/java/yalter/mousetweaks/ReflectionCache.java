@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
+@SuppressWarnings("rawtypes")
 public class ReflectionCache {
 	private HashMap<String, Class> classes = new HashMap<String, Class>();
 	private HashMap<String, Method> methods = new HashMap<String, Method>();

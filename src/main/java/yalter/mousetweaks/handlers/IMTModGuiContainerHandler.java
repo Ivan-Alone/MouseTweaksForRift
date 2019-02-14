@@ -7,11 +7,10 @@ import yalter.mousetweaks.MouseButton;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class IMTModGuiContainerHandler implements IGuiScreenHandler {
-	@SuppressWarnings("deprecation")
 	protected yalter.mousetweaks.api.IMTModGuiContainer modGuiContainer;
 
-	@SuppressWarnings("deprecation")
 	public IMTModGuiContainerHandler(yalter.mousetweaks.api.IMTModGuiContainer modGuiContainer) {
 		this.modGuiContainer = modGuiContainer;
 	}
